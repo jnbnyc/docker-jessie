@@ -1,13 +1,14 @@
 #!/bin/bash
 
+
 set -e
 
+echo "Updating apt cache"
+apt-get update
 
-DEBIAN_FRONTEND=noninteractive
+if [[ ! -z "$@" ]]; then
+  echo "Removing $@"
+  apt-get remove -y --purge --auto-remove $@
+fi
 
-# echo "Updating apt cache"
-# apt-get update
-echo "Removing $@"
-apt-get remove -y $@
-# apt-get clean
-# rm -rf /var/cache/apt/* /var/lib/apt/lists/*
+rm -rf /var/cache/apt/* /var/lib/apt/lists/*

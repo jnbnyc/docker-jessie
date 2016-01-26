@@ -1,0 +1,10 @@
+{
+  "docker-jessie": {
+    "artifact_name": "jessie", 
+    "team": "devops", 
+    "notify_jenkins_on_commit": true, 
+    "org": "nyc.jnb.devops", 
+    "docker_repo_override": "jnbnyc", 
+    "build_type": "docker"
+  }
+}
