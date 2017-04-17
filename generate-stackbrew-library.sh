@@ -2,7 +2,7 @@
 set -eu
 
 declare -A aliases=(
-	[jessie]='latest'
+	[jessie]="latest $(cat jessie/version.txt)"
 )
 
 GIT_REPO=$(git remote get-url origin)
