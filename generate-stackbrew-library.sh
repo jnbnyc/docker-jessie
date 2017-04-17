@@ -1,10 +1,12 @@
 #!/bin/bash
 set -eu
+# set -x
 
 declare -A aliases=(
 	[jessie]="latest $(cat jessie/version.txt)"
 )
 
+DOCKER_REPO='jnbnyc'
 GIT_REPO=$(git remote get-url origin)
 
 self="$(basename "$BASH_SOURCE")"
@@ -41,6 +43,7 @@ cat <<-EOH
 Maintainers: $(cat MAINTAINERS)
 GitRepo: ${GIT_REPO%%.git}
 EOH
+[ -z "$DOCKER_REPO" ] || echo "Constraints: ${DOCKER_REPO}"
 
 # prints "$2$1$3$1...$N"
 join() {
